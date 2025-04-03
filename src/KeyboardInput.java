@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.Buffer;
@@ -44,6 +46,26 @@ public class KeyboardInput {
             }
 
             System.out.println("Hallo " + name + ", Sie sind " + alter + " Jahre alt.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void viaBufferFromFile() {
+
+        try {
+            File file = new File("Max.txt");
+            FileReader isr = new FileReader(file);
+            BufferedReader br = new BufferedReader(isr);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            br.close();
+            isr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
